@@ -1,0 +1,263 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": -1,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 6,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "always",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "currencyBRL"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "decimals",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "10.0.8",
+        "targets": [
+          {
+            "alias": "$tag_title_type - $tag_title",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+            },
+            "groupBy": [
+              {
+                "params": [
+                  "_id"
+                ],
+                "type": "tag"
+              },
+              {
+                "params": [
+                  "title_type"
+                ],
+                "type": "tag"
+              },
+              {
+                "params": [
+                  "title"
+                ],
+                "type": "tag"
+              }
+            ],
+            "measurement": "prices_amazon",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"price_in_brl\" FROM \"prices_famdvd\" WHERE (\"title_type\" =~ /^$title_type$/ AND \"title\" =~ /^$title$/) AND $timeFilter GROUP BY \"title_id\", \"title\"",
+            "rawQuery": false,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "price"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "title_type",
+                "operator": "=~",
+                "value": "/^$title_type$/"
+              },
+              {
+                "condition": "AND",
+                "key": "title",
+                "operator": "=~",
+                "value": "/^$title$/"
+              }
+            ]
+          }
+        ],
+        "title": "Price History",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "4K",
+              "Blu-ray",
+              "DVD"
+            ],
+            "value": [
+              "4K",
+              "Blu-ray",
+              "DVD"
+            ]
+          },
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+          },
+          "definition": "",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Edition",
+          "multi": true,
+          "name": "title_type",
+          "options": [],
+          "query": "show tag values from prices_amazon with key = title_type",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "Spider-Man: Across The Spider-Verse - BD/DVD Combo + Digital",
+              "Spider-Man: Across The Spider-Verse - UHD/BD Combo + Digital",
+              "Spider-Man: Across the Spider-Verse / Spider-Man: Into the Spider-Verse - Multi-Feature (2 Disc) - Blu-ray + Digital"
+            ],
+            "value": [
+              "Spider-Man: Across The Spider-Verse - BD/DVD Combo + Digital",
+              "Spider-Man: Across The Spider-Verse - UHD/BD Combo + Digital",
+              "Spider-Man: Across the Spider-Verse / Spider-Man: Into the Spider-Verse - Multi-Feature (2 Disc) - Blu-ray + Digital"
+            ]
+          },
+          "datasource": {
+            "type": "influxdb",
+            "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+          },
+          "definition": "",
+          "hide": 0,
+          "includeAll": false,
+          "label": "Title",
+          "multi": true,
+          "name": "title",
+          "options": [],
+          "query": "show tag values from prices_amazon with key = title",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Amazon - Prices",
+    "uid": "GKY5Om-Mk",
+    "version": 4,
+    "weekStart": ""
+  }
