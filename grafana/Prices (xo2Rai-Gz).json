@@ -18,14 +18,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 9,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+        "uid": "betsvi5bxrxmoe"
       },
       "fieldConfig": {
         "defaults": {
@@ -33,6 +33,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -46,6 +47,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 2,
             "pointSize": 6,
@@ -114,7 +116,7 @@
           "alias": "$m - $tag_title_type - $tag_title",
           "datasource": {
             "type": "influxdb",
-            "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+            "uid": "betsvi5bxrxmoe"
           },
           "groupBy": [
             {
@@ -139,8 +141,8 @@
           "measurement": "/^$site$/",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"price_in_brl\" FROM \"prices_famdvd\" WHERE (\"title_type\" =~ /^$title_type$/ AND \"title\" =~ /^$title$/) AND $timeFilter GROUP BY \"title_id\", \"title\"",
-          "rawQuery": false,
+          "query": "SELECT \"price\" FROM /^$site$/ WHERE (\"title_type\" =~ /^$title_type$/ AND \"title\" =~ /^$title$/) AND $timeFilter GROUP BY \"_id\", \"title_type\", \"title\"",
+          "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -173,8 +175,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
@@ -182,31 +183,19 @@
         "current": {
           "selected": true,
           "text": [
-            "prices_amazon",
-            "prices_colecioneclassicos",
-            "prices_famdvd",
-            "prices_imusicbr",
-            "prices_theoriginals",
-            "prices_versatil",
-            "prices_videoperola"
+            "All"
           ],
           "value": [
-            "prices_amazon",
-            "prices_colecioneclassicos",
-            "prices_famdvd",
-            "prices_imusicbr",
-            "prices_theoriginals",
-            "prices_versatil",
-            "prices_videoperola"
+            "$__all"
           ]
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+          "uid": "betsvi5bxrxmoe"
         },
         "definition": "",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Site",
         "multi": true,
         "name": "site",
@@ -225,100 +214,24 @@
         "current": {
           "selected": true,
           "text": [
-            "3D",
-            "4K",
-            "Blu-Ray",
-            "Blu-Ray + Blu-Ray 3D",
-            "Blu-Ray + DVD",
-            "Blu-Ray 2D + 3D",
-            "Blu-Ray 2D + Blu-Ray 3D",
-            "Blu-Ray 2D e 3D",
-            "Blu-Ray 3D",
-            "Blu-Ray 3D+2D",
-            "Blu-Ray 3D/2D",
-            "Blu-Ray 4K UHD + Blu-Ray+ DVD",
-            "Blu-Ray Box",
-            "Blu-Ray Duplo",
-            "Blu-Ray SteelBook",
-            "Blu-Ray Steelbook",
-            "Blu-ray",
-            "Blu-ray + Blu-Ray 3D",
-            "Blu-ray + Blu-ray 3d",
-            "Blu-ray + DVD",
-            "Blu-ray 2D + Blu-ray 3D",
-            "Blu-ray 3D",
-            "Blu-ray 3D + Blu-ray",
-            "Blu-ray 4K",
-            "Blu-ray Box",
-            "Blu-ray Steelbook",
-            "DVD",
-            "DVD Box",
-            "DVD Duplo",
-            "Desconhecido",
-            "Luva",
-            "Luva e Cards",
-            "SteelBook",
-            "SteelBook Blu-Ray",
-            "SteelBook Blu-Ray + Blu-Ray 3D",
-            "SteelBook Duplo",
-            "Steelbook",
-            "Steelbook Blu-Ray",
-            "Steelbook Blu-ray"
+            "All"
           ],
           "value": [
-            "3D",
-            "4K",
-            "Blu-Ray",
-            "Blu-Ray + Blu-Ray 3D",
-            "Blu-Ray + DVD",
-            "Blu-Ray 2D + 3D",
-            "Blu-Ray 2D + Blu-Ray 3D",
-            "Blu-Ray 2D e 3D",
-            "Blu-Ray 3D",
-            "Blu-Ray 3D+2D",
-            "Blu-Ray 3D/2D",
-            "Blu-Ray 4K UHD + Blu-Ray+ DVD",
-            "Blu-Ray Box",
-            "Blu-Ray Duplo",
-            "Blu-Ray SteelBook",
-            "Blu-Ray Steelbook",
-            "Blu-ray",
-            "Blu-ray + Blu-Ray 3D",
-            "Blu-ray + Blu-ray 3d",
-            "Blu-ray + DVD",
-            "Blu-ray 2D + Blu-ray 3D",
-            "Blu-ray 3D",
-            "Blu-ray 3D + Blu-ray",
-            "Blu-ray 4K",
-            "Blu-ray Box",
-            "Blu-ray Steelbook",
-            "DVD",
-            "DVD Box",
-            "DVD Duplo",
-            "Desconhecido",
-            "Luva",
-            "Luva e Cards",
-            "SteelBook",
-            "SteelBook Blu-Ray",
-            "SteelBook Blu-Ray + Blu-Ray 3D",
-            "SteelBook Duplo",
-            "Steelbook",
-            "Steelbook Blu-Ray",
-            "Steelbook Blu-ray"
+            "$__all"
           ]
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+          "uid": "betsvi5bxrxmoe"
         },
-        "definition": "",
+        "definition": "show tag values from prices_amazon, prices_colecioneclassicos, prices_famdvd, prices_imusicbr, prices_theroriginals, prices_versatil with key = title_type",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Edition",
         "multi": true,
         "name": "title_type",
         "options": [],
-        "query": "show tag values from prices_amazon, prices_colecioneclassicos, prices_famdvd, prices_theroriginals, prices_videoperola with key = title_type",
+        "query": "show tag values from prices_amazon, prices_colecioneclassicos, prices_famdvd, prices_imusicbr, prices_theroriginals, prices_versatil with key = title_type",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -332,34 +245,29 @@
         "current": {
           "selected": true,
           "text": [
-            "O Máskara",
-            "O Máskara -  Edição de Colecionador (Jim Carrey - Cameron Diaz)"
+            "All"
           ],
           "value": [
-            "O Máskara",
-            "O Máskara -  Edição de Colecionador (Jim Carrey - Cameron Diaz)"
+            "$__all"
           ]
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "ee5b81a3-ec7f-4a7f-bddf-eef60c08c64c"
+          "uid": "betsvi5bxrxmoe"
         },
-        "definition": "",
+        "definition": "show tag values from prices_amazon, prices_colecioneclassicos, prices_famdvd, prices_imusicbr, prices_theroriginals, prices_versatil with key = title",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Title",
         "multi": true,
         "name": "title",
         "options": [],
-        "query": "show tag values from prices_amazon, prices_colecioneclassicos, prices_famdvd, prices_theroriginals, prices_videoperola with key = title",
+        "query": "show tag values from prices_amazon, prices_colecioneclassicos, prices_famdvd, prices_imusicbr, prices_theroriginals, prices_versatil with key = title",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       }
     ]
   },
@@ -371,6 +279,6 @@
   "timezone": "",
   "title": "Prices",
   "uid": "xo2Rai-Gz",
-  "version": 5,
+  "version": 9,
   "weekStart": ""
 }
