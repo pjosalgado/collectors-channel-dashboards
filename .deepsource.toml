@@ -1,9 +1,9 @@
 version = 1
 
 [[analyzers]]
-name = "shell"
 enabled = true
+name = "shell"
 
 [[analyzers]]
-name = "secrets"
 enabled = true
+name = "secrets"
